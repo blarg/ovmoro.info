@@ -5,29 +5,11 @@ body {
     margin: 0;
 }
 
-#sidebar {
-    height: 100%;
-    width: 170px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #ccc;
-    overflow-x: hidden;
-    padding-left: 10px;
-}
-
-#sidebar footer {
-    position: absolute;
-    width: 160px;
-    bottom: 0;
-}
-
-
 @media (prefers-color-scheme: light) {
 :root {
     --content-color: #111;
     --content-background-color: #eee;
+    --sidebar-background-color: #ddd;
     --link-color: #00f;
     --link-hover-color: #fff;
 }
@@ -36,17 +18,56 @@ body {
 :root {
     --content-color: #eee;
     --content-background-color: #151515;
+    --sidebar-background-color: #222;
     --link-color: #0f0;
     --link-hover-color: #000;
 }
 }
 
-#content {
+@media only screen and (min-width: 600px) {
+:root {
+    --sidebar-display: block;
+    --sidebar-width: 170px;
+    --sidebar-footer-width: 160px;
+    --content-sidebar-width: 180px;
+}
+}
+@media only screen and (max-width: 600px) {
+:root {
+    --sidebar-display: none;
+    --sidebar-width: 0;
+    --sidebar-footer-width: 0;
+    --content-sidebar-width: 10px;
+}
+}
+
+#sidebar {
+    display: var(--sidebar-display);
+    height: 100%;
+    width: var(--sidebar-width);
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    color: var(--content-color);
+    background-color: var(--sidebar-background-color);
+    overflow-x: hidden;
+    padding-left: 10px;
+}
+
+#sidebar footer {
+    position: absolute;
+    width: var(--sidebar-footer-width);
+    bottom: 0;
+}
+
+#content,
+#inner-content {
     height: 100%;
     color: var(--content-color);
     background-color: var(--content-background-color);
     margin-top: -20px;
-    margin-left: 180px; /* Same as the width of the sidebar */
+    margin-left: var(--content-sidebar-width);
     padding-top: 20px;
     padding-left: 10px;
 }
@@ -70,7 +91,7 @@ a, a:link, a:visited {
 a:hover {
     font: bold 12pt Monospace;
     color: var(--link-hover-color);
-    background-color: #000;
+    background-color: #fff;
     text-decoration: none;
 }
 
