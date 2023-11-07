@@ -68,6 +68,7 @@ body {
     background-color: var(--content-background-color);
     margin-top: -20px;
     margin-left: var(--content-sidebar-width);
+    padding-right: var(--content-sidebar-width);
     padding-top: 20px;
     padding-left: 10px;
 }
@@ -95,10 +96,22 @@ a:hover {
     text-decoration: none;
 }
 
-#main {
+#main
+{
     border: 0;
     width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
 }
+
+.post
+{
+    border: 0;
+    color: var(--content-color);
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
