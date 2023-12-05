@@ -4,3 +4,6 @@ config.log
 configure
 Makefile
 aclocal.m4
+.DS_Store
+/old/
+/autom4te.cache/
